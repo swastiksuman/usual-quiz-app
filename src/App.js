@@ -18,10 +18,17 @@ function Turn({author, books}){
         <img src={author.imageUrl} className="authorimage" alt="Author"></img>
       </div>
       <div className="col-6">
-        {books.map((title) => <p>{title}</p>)}
+        {books.map((title) => <Book title={title} key={title}></Book>)}
       </div>
     </div>
   );
+}
+
+
+function Book({title}){
+  return (<div className="answer">
+    <h4>{title}</h4>
+  </div>);
 }
 
 function Continue(){

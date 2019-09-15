@@ -10,7 +10,9 @@ const authors = [
         name: "Mark Twain",
         imageUrl: "https://cdn.britannica.com/s:300x300/83/136283-050-9C9D6ED8/Mark-Twain-1907.jpg",
         imageSource: "Wikimedia Commons",
-        books: ["The Adventures of Huckleberry Finn"]
+        books: ["The Adventures of Huckleberry Finn",
+                "The Adventures of Tom Sawyer",
+                "Tale of 2 Cities"]
     }
 ];
 
