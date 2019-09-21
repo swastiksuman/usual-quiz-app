@@ -12,38 +12,46 @@ function Hero(){
   </div>);
 }
 
-function Turn({author, books}){
-  return (<div className="row turn" style={{backgroundColor: "white"}}>
+function Turn({author, books, highlight, onAnswerSelected}){
+  function highlightToBgColor(highlight){
+    const mapping = {
+      'none': '',
+      'correct': 'green',
+      'wrong': 'red'
+    };
+    return mapping[highlight];
+  }
+  return (<div className="row turn" style={{backgroundColor: highlightToBgColor(highlight)}}>
       <div className="col-4 offset-1">
         <img src={author.imageUrl} className="authorimage" alt="Author"></img>
       </div>
       <div className="col-6">
-        {books.map((title) => <Book title={title} key={title}></Book>)}
+        {books.map((title) => <Book title={title} key={title} onClick={onAnswerSelected}></Book>)}
       </div>
     </div>
   );
 }
 
 
-function Book({title}){
-  return (<div className="answer">
+function Book({title, onClick}){
+  return (<div className="answer" onClick={()=>{onClick(title);}}>
     <h4>{title}</h4>
   </div>);
 }
 
 function Continue(){
-  return <h1>s</h1>;
+  return <h1></h1>;
 }
 
 function Footer(){
-  return <h1>Footer</h1>;
+  return <h1></h1>;
 }
 
-function AuthorQuiz({turnData}) {
+function AuthorQuiz({turnData, highlight, onAnswerSelected}) {
   return (
     <div className="container-fluid">
       <Hero/>
-      <Turn {...turnData}/>
+      <Turn {...turnData} highlight={highlight} onAnswerSelected={onAnswerSelected}/>
       <Continue/>
       <Footer/>
     </div>
